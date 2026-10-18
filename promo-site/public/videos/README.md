@@ -1,3 +1,5 @@
 # Videos
 
-Add `usability-testing.mp4` and `pulseband-promo.mp4` here, then enable their paths in `src/data/projectContent.js`.
+`usability-testing.mp4` is connected to the usability testing section.
+
+`pulseband-promo.mp4` is connected to the promotional video section after About.

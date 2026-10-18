@@ -11,9 +11,7 @@ export const projectContent = {
   },
   friends: [
     { name: 'Nayaka', initials: 'N', colour: '#A855F7' },
-    { name: 'Amy', initials: 'A', colour: '#EF4444' },
     { name: 'Syifa', initials: 'S', colour: '#FACC15' },
-    { name: 'Nala', initials: 'N', colour: '#22C55E' },
   ],
   features: [
     {
@@ -25,23 +23,22 @@ export const projectContent = {
     {
       number: '02',
       title: 'Quick Signals',
-      copy: 'Send simple updates without typing:',
+      copy: 'Send pre-made messages without typing during the event. Customise your messages before the event.',
       visual: 'signals',
       signals: ['Toilet', 'Taking a Break', 'Going Home', 'I’m Safe'],
     },
     {
       number: '03',
       title: 'SOS',
-      copy: 'Send an urgent signal to connected group members using deliberate confirmation.',
+      copy: 'Send an urgent signal to your connected friend using deliberate confirmation.',
       visual: 'sos',
     },
   ],
   howItWorks: [
     { number: '01', title: 'Select', copy: 'Choose Find Friend.', visual: 'select' },
-    { number: '02', title: 'Choose', copy: 'Select the friend you want to reconnect with.', visual: 'friends' },
-    { number: '03', title: 'Follow', copy: 'Use directional guidance.', visual: 'arrow' },
-    { number: '04', title: 'Get Closer', copy: 'Proximity feedback becomes more noticeable.', visual: 'proximity' },
-    { number: '05', title: 'Reconnect', copy: 'Return attention to your friends and the event.', visual: 'connected' },
+    { number: '02', title: 'Follow', copy: 'Use directional guidance.', visual: 'arrow' },
+    { number: '03', title: 'Get Closer', copy: 'Proximity feedback becomes more noticeable.', visual: 'proximity' },
+    { number: '04', title: 'Reconnect', copy: 'Return attention to your friend and the event.', visual: 'connected' },
   ],
   tutorial: [
     {
@@ -62,31 +59,29 @@ export const projectContent = {
       steps: [
         ['Choose your update', '/tutorial/quick-signal-01.jpg'],
         ['Confirm it', '/tutorial/quick-signal-02.jpg'],
-        ['The group receives the message', '/tutorial/quick-signal-03.jpg'],
+        ['Your connected friend receives the message', '/tutorial/quick-signal-03.jpg'],
       ],
     },
     {
       key: 'sos',
       label: 'C / Send SOS',
-      note: 'A deliberate group alert',
+      note: 'A deliberate alert to your connected friend',
       steps: [
         ['Activate SOS', '/tutorial/sos-01.jpg'],
         ['Confirm deliberately', '/tutorial/sos-02.jpg'],
-        ['Alert the connected group', '/tutorial/sos-03.jpg'],
+        ['Alert your connected friend', '/tutorial/sos-03.jpg'],
       ],
     },
   ],
   videos: {
     usability: {
-      label: 'Usability testing video placeholder',
-      placeholder: 'Video coming soon',
-      src: '',
+      label: 'PulseBand usability testing video',
+      src: '/videos/usability-testing.mp4',
       poster: '',
     },
     promo: {
-      label: 'Promo video placeholder',
-      placeholder: 'Coming soon',
-      src: '',
+      label: 'PulseBand promotional video',
+      src: '/videos/pulseband-promo.mp4',
       poster: '',
     },
   },
@@ -112,9 +107,9 @@ export const projectContent = {
     },
   ],
   team: [
-    { name: 'Nguyen Minh Thao Vy', preferred: 'Amy' },
-    { name: 'Serafina Nala Putri Setiawan', preferred: 'Nala / Serafina' },
-    { name: 'Syifa Ananda Widyati', preferred: '' },
-    { name: 'Andhika Nayaka Arya Wibowo', preferred: 'Nayaka' },
+    { name: 'Andhika Nayaka Arya Wibowo' },
+    { name: 'Serafina Nala Putri Setiawan' },
+    { name: 'Syifa Ananda Widyati' },
+    { name: 'Nguyen Minh Thao Vy' },
   ],
 }

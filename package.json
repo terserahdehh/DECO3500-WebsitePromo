@@ -1,0 +1,10 @@
+{
+  "name": "deco3500-website-promo",
+  "private": true,
+  "workspaces": ["promo-site"],
+  "scripts": {
+    "dev": "npm run dev --workspace=promo-site",
+    "build": "npm run build --workspace=promo-site",
+    "preview": "npm run preview --workspace=promo-site"
+  }
+}

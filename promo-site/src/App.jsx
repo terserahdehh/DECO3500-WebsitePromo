@@ -34,7 +34,7 @@ function Header() {
 
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}${open ? ' menu-open' : ''}`}>
-      <a className="wordmark" href="#home" onClick={close}>PULSEBAND<span aria-hidden="true">•</span></a>
+      <a className="wordmark" href="#home" onClick={close}>PulseBand<span aria-hidden="true">•</span></a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
       </nav>
@@ -56,29 +56,9 @@ function Header() {
   )
 }
 
-function Waveform() {
-  const bars = [16, 30, 50, 84, 48, 72, 104, 58, 34, 68, 116, 90, 52, 30, 64, 98, 72, 46, 82, 108, 70, 50, 32, 60, 88, 64, 42, 24]
-  return (
-    <div className="waveform" aria-hidden="true">
-      {bars.map((height, index) => <span key={index} style={{ '--wave-height': `${height}px`, '--delay': `${index * -0.07}s` }} />)}
-    </div>
-  )
-}
-
 function HeroArtwork() {
   return (
-    <figure className="hero-art" aria-labelledby="hero-art-caption">
-      <div className="hero-art-grid" aria-hidden="true" />
-      <div className="hero-art-circle hero-art-circle--coral" aria-hidden="true" />
-      <div className="hero-art-circle hero-art-circle--line" aria-hidden="true" />
-      <div className="hero-art-signal" aria-hidden="true">
-        {[22, 42, 68, 38, 76, 54, 92, 48, 66, 30, 72, 44].map((height, index) => (
-          <i key={index} style={{ '--signal-height': `${height}px`, '--signal-delay': `${index * -0.12}s` }} />
-        ))}
-      </div>
-      <div className="hero-friend-dots" aria-hidden="true">
-        {content.friends.map((friend) => <i key={friend.name} style={{ '--friend-colour': friend.colour }} />)}
-      </div>
+    <figure className="hero-art">
       <div className="hero-device-wrap">
         <img
           className="hero-device-main"
@@ -86,10 +66,10 @@ function HeroArtwork() {
           alt={content.productImage.alt}
           loading="eager"
           fetchPriority="high"
+          width="1672"
+          height="941"
         />
       </div>
-      <div className="hero-art-note" aria-hidden="true"><span>Stay aware</span><i /><span>Reconnect</span></div>
-      <figcaption id="hero-art-caption"><span>PulseBand / Pair connection</span><span>Social wearable concept / 2026</span></figcaption>
     </figure>
   )
 }
@@ -113,18 +93,20 @@ function Hero() {
   return (
     <section className="hero" id="home" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <div className="hero-meta">
-          <span>Team 16</span>
-          <span>DECO3500 / Social &amp; Mobile Computing</span>
-          <span>2026</span>
-        </div>
-        <h1 id="hero-title"><span>Pulse</span><span>Band</span></h1>
-        <p className="hero-statement">Stay connected.<br />Feel the moment.</p>
+        <div className="hero-eyebrow"><span /> Your people. Always within reach.</div>
+        <h1 id="hero-title">Stay connected.<br /><span>Feel the moment.</span></h1>
         <p className="hero-description">A social wearable concept that helps friends communicate, reconnect and stay aware of each other during concerts and music festivals.</p>
-        <a className="scroll-link" href="#about">Scroll to explore <span aria-hidden="true">↓</span></a>
+        <div className="hero-actions">
+          <a className="hero-cta" href="#features">Meet PulseBand <span aria-hidden="true">↗</span></a>
+          <a className="scroll-link" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
       <HeroArtwork />
-      <Waveform />
+      <div className="hero-bottom">
+        <span>PulseBand</span>
+        <a href="#about">Scroll to explore <span aria-hidden="true">↓</span></a>
+        <span>Team 16 · DECO3500 · 2026</span>
+      </div>
     </section>
   )
 }
@@ -178,7 +160,7 @@ function FeatureVisual({ feature }) {
 function Features() {
   return (
     <section className="features section-pad" id="features" aria-labelledby="features-title">
-      <SectionMeta light>03 / Core experience</SectionMeta>
+      <SectionMeta light>04 / Core experience</SectionMeta>
       <div className="features-heading reveal">
         <h2 id="features-title">Three things.<br /><em>That’s the point.</em></h2>
         <p>A focused set of interactions for awareness, quick communication and reconnection.</p>
@@ -198,12 +180,12 @@ function Features() {
       <div className="product-gallery reveal">
         <ProductCampaignVisual />
         <div className="friend-key">
-          <span>Connected group</span>
+          <span>Connected pair</span>
           {content.friends.map((friend) => (
             <div key={friend.name}><i style={{ '--friend-colour': friend.colour }}>{friend.initials}</i><strong>{friend.name}</strong></div>
           ))}
         </div>
-        <p>Some directional, proximity and Bluetooth behaviours are simulated in the proof-of-concept.</p>
+        <p>The prototype connects two watches: Nayaka and Syifa. Some directional, proximity and Bluetooth behaviours are simulated in the proof-of-concept.</p>
       </div>
     </section>
   )
@@ -239,7 +221,7 @@ function InteractionVisual({ type }) {
 function HowItWorks() {
   return (
     <section className="how section-pad" id="how-it-works" aria-labelledby="how-title">
-      <SectionMeta>04 / How it works</SectionMeta>
+      <SectionMeta>05 / How it works</SectionMeta>
       <div className="how-heading reveal">
         <h2 id="how-title">A few taps.<br /><em>A closer friend.</em></h2>
       </div>
@@ -259,78 +241,10 @@ function HowItWorks() {
   )
 }
 
-function TutorialImage({ src, label, index }) {
-  const [failed, setFailed] = useState(false)
-  if (failed) {
-    return (
-      <div className="tutorial-placeholder" role="img" aria-label={`${label} screenshot placeholder`}>
-        <span>Screen {String(index + 1).padStart(2, '0')}</span>
-        <div className="placeholder-ui"><i /><i /><strong>{label}</strong><b>+</b></div>
-        <small>Replace in /public/tutorial</small>
-      </div>
-    )
-  }
-  return <img src={src} alt={`${label} tutorial screen`} onError={() => setFailed(true)} />
-}
-
-function Tutorial() {
-  const [groupIndex, setGroupIndex] = useState(0)
-  const [stepIndex, setStepIndex] = useState(0)
-  const group = content.tutorial[groupIndex]
-  const [stepLabel, stepImage] = group.steps[stepIndex]
-
-  const selectGroup = (index) => {
-    setGroupIndex(index)
-    setStepIndex(0)
-  }
-
-  return (
-    <section className="tutorial section-pad" id="tutorial" aria-labelledby="tutorial-title">
-      <SectionMeta>05 / Step by step</SectionMeta>
-      <div className="tutorial-heading reveal">
-        <h2 id="tutorial-title">See how<br />it works.</h2>
-        <p>Three simple flows. Select each step to explore the interaction.</p>
-      </div>
-      <div className="tutorial-tabs" role="tablist" aria-label="Tutorial flows">
-        {content.tutorial.map((item, index) => (
-          <button
-            type="button"
-            role="tab"
-            aria-selected={groupIndex === index}
-            className={groupIndex === index ? 'is-active' : ''}
-            onClick={() => selectGroup(index)}
-            key={item.key}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-      <div className="tutorial-stage" role="tabpanel">
-        <div className="tutorial-media"><TutorialImage key={stepImage} src={stepImage} label={stepLabel} index={stepIndex} /></div>
-        <div className="tutorial-copy">
-          <span>{group.label}</span>
-          <p className="tutorial-note">{group.note}</p>
-          <ol>
-            {group.steps.map(([label], index) => (
-              <li key={label} className={stepIndex === index ? 'is-active' : ''}>
-                <button type="button" onClick={() => setStepIndex(index)}><span>{String(index + 1).padStart(2, '0')}</span>{label}</button>
-              </li>
-            ))}
-          </ol>
-          <button className="round-button" type="button" onClick={() => setStepIndex((current) => (current + 1) % group.steps.length)} aria-label="Next tutorial step">
-            <ArrowIcon />
-          </button>
-        </div>
-      </div>
-      <p className="sos-disclaimer">SOS currently alerts connected group members. It does not contact emergency services.</p>
-    </section>
-  )
-}
-
 function VideoPlayer({ video }) {
   if (video.src) {
     return (
-      <video className="video-player" controls preload="metadata" poster={video.poster || undefined}>
+      <video className="video-player" controls playsInline preload="metadata" aria-label={video.label} poster={video.poster || undefined}>
         <source src={video.src} type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
@@ -359,33 +273,12 @@ function UsabilityTesting() {
   )
 }
 
-function Improvements() {
-  return (
-    <section className="improvements section-pad" aria-labelledby="improvements-title">
-      <SectionMeta>07 / What we improved</SectionMeta>
-      <h2 id="improvements-title" className="reveal">Test.<br />Notice.<br /><em>Improve.</em></h2>
-      <div className="improvement-list">
-        {content.improvements.map((item) => (
-          <article className="improvement reveal" key={item.number}>
-            <span>{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.finding}{item.note && <small>{item.note}</small>}</p>
-            <strong>{item.refinement}</strong>
-          </article>
-        ))}
-      </div>
-      <p className="improvement-closing">Simpler.<br />Clearer.<br /><em>More focused.</em></p>
-    </section>
-  )
-}
-
 function PromoVideo() {
   return (
     <section className="promo-video section-pad" id="videos" aria-labelledby="videos-title">
-      <SectionMeta light>08 / In the moment</SectionMeta>
+      <SectionMeta light>03 / In the moment</SectionMeta>
       <div className="promo-heading reveal">
         <h2 id="videos-title">See PulseBand<br /><em>in the moment.</em></h2>
-        <p>The video will be inserted later.</p>
       </div>
       <div className="reveal"><VideoPlayer video={content.videos.promo} /></div>
     </section>
@@ -395,13 +288,21 @@ function PromoVideo() {
 function TeamClosing() {
   return (
     <section className="closing section-pad" id="team" aria-labelledby="closing-title">
-      <SectionMeta>09 / Team 16</SectionMeta>
+      <SectionMeta>07 / Team 16</SectionMeta>
       <h2 id="closing-title" className="reveal">Stay connected.<br /><em>Feel the moment.</em></h2>
       <div className="closing-layout">
-        <div className="closing-brand"><strong>PulseBand</strong><span>Team 16</span></div>
+        <aside className="closing-brand" aria-label="About the team">
+          <span className="team-card-label"><i aria-hidden="true" /> The people behind it</span>
+          <h3>Team 16<span>.</span></h3>
+          <p>Bringing friends closer,<br />one pulse at a time.</p>
+          <div className="team-card-footer">
+            <strong>PulseBand<span aria-hidden="true">•</span></strong>
+            <span>DECO3500<br />Social &amp; Mobile Computing</span>
+          </div>
+        </aside>
         <div className="team-list">
           {content.team.map((member, index) => (
-            <article key={member.name}><span>{String(index + 1).padStart(2, '0')}</span><h3>{member.name}</h3><p>{member.preferred || 'Team member'}</p></article>
+            <article key={member.name}><span>{String(index + 1).padStart(2, '0')}</span><h3>{member.name}</h3></article>
           ))}
         </div>
       </div>
@@ -431,30 +332,6 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return undefined
-
-    let frame
-    const updateParallax = () => {
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => {
-        const shift = Math.min(window.scrollY * 0.045, 42)
-        const graphicShift = Math.max(window.scrollY * -0.018, -18)
-        document.documentElement.style.setProperty('--hero-parallax', `${shift}px`)
-        document.documentElement.style.setProperty('--hero-graphic-parallax', `${graphicShift}px`)
-      })
-    }
-
-    updateParallax()
-    window.addEventListener('scroll', updateParallax, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', updateParallax)
-      cancelAnimationFrame(frame)
-      document.documentElement.style.removeProperty('--hero-parallax')
-      document.documentElement.style.removeProperty('--hero-graphic-parallax')
-    }
-  }, [])
 
   return (
     <>
@@ -463,12 +340,10 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <About />
+        <PromoVideo />
         <Features />
         <HowItWorks />
-        <Tutorial />
         <UsabilityTesting />
-        <Improvements />
-        <PromoVideo />
         <TeamClosing />
       </main>
     </>

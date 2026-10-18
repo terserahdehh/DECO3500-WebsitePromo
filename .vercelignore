@@ -1,0 +1,8 @@
+node_modules
+**/node_modules
+**/dist
+.git
+
+# Keep original video backups out of deployment uploads.
+promovideo .mp4
+usabilitytesting.mp4

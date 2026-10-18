@@ -1,0 +1,5 @@
+node_modules/
+
+# Original video backups; compressed copies live in promo-site/public/videos/.
+/promovideo .mp4
+/usabilitytesting.mp4
