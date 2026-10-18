@@ -265,7 +265,7 @@ function UsabilityTesting() {
     <section className="testing section-pad" id="testing" aria-labelledby="testing-title">
       <SectionMeta light>06 / Usability testing</SectionMeta>
       <div className="testing-heading reveal">
-        <h2 id="testing-title">Tested with people.<br /><em>Not just designed on screen.</em></h2>
+        <h2 id="testing-title">Tested with People.<br /><em>Refined through Feedback.</em></h2>
         <p>Five participants tested PulseBand’s friend-finding and proximity interactions.</p>
       </div>
       <div className="reveal"><VideoPlayer video={content.videos.usability} /></div>
